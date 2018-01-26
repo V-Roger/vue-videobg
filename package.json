@@ -1,9 +1,12 @@
 {
-  "name": "vue-videobg",
+  "name": "vue-videobackground",
   "version": "2.0.0",
   "author": "Pantelis Peslis <pespantelis@gmail.com>",
+  "contributors": [
+    "Virgil Roger <roger.virgil@gmail.com>"
+  ],
   "license": "MIT",
-  "description": "Video Background component for Vue.js",
+  "description": "Video Background component for Vue.js | forked from http://pespantelis.github.io/vue-videobg/ cheers Pantelis Peslis !",
   "keywords": [
     "vue",
     "video",
@@ -12,10 +15,10 @@
   "main": "src/VideoBackground.vue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pespantelis/vue-videobg.git"
+    "url": "https://github.com/V-Roger/vue-videobg.git"
   },
-  "bugs": "https://github.com/pespantelis/vue-videobg/issues",
-  "homepage": "http://pespantelis.github.io/vue-videobg/",
+  "bugs": "https://github.com/V-Roger/vue-videobg/issues",
+  "homepage": "https://github.com/V-Roger/vue-videobg/",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"

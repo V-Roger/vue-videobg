@@ -1,7 +1,7 @@
 <template>
   <section class="VideoBg">
-    <video autoplay loop muted ref="video">
-      <source v-for="source in sources" :src="source" :type="getMediaType(source)">
+    <video v-if="videoMounted" playsinline autoplay loop muted ref="video" :src="sources[0]">
+      <source v-bind:key="source" v-for="source in sources" :src="source" :type="getMediaType(source)">
     </video>
     <div class="VideoBg__content">
       <slot></slot>
@@ -19,12 +19,23 @@
       },
       img: {
         type: String
+      },
+      defer: {
+        type: Boolean,
+        default: true
       }
     },
 
     data () {
       return {
-        videoRatio: null
+        videoRatio: null,
+        videoMounted: true
+      }
+    },
+
+    beforeMount () {
+      if (!this.$props.defer) {
+        this.videoMounted = false
       }
     },
 
@@ -49,6 +60,14 @@
       window.removeEventListener('resize', this.resize)
     },
 
+    watch: {
+      defer(newValue) {
+        if (newValue) {
+          this.videoMounted = true
+        }
+      }
+    },
+
     methods: {
       resize () {
         this.setContainerHeight()
@@ -59,7 +78,7 @@
       },
 
       videoCanPlay () {
-        return !!this.$refs.video.canPlayType
+        return !!(this.$refs.video && this.$refs.video.canPlayType)
       },
 
       setImageUrl () {
